@@ -72,11 +72,15 @@ output_shape = y[0].shape
 # Set random seed
 tf.random.set_seed(42)
 
-# Create a model using the Sequential API
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(1), 
+    tf.keras.layers.Input(shape=(1,)),
     tf.keras.layers.Dense(1)
-    ])
+])
+# Create a model using the Sequential API
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Dense(1), 
+#     tf.keras.layers.Dense(1)
+#     ])
 
 # Compile the model
 model.compile(loss = tf.keras.losses.mae,
@@ -98,5 +102,5 @@ mse_1 = np.round(float(mse(y_test, y_preds.squeeze()).numpy()), 2)
 print(f'\nMean Absolute Error = {mae_1}, Mean Squared Error = {mse_1}.')
 
 # Write metrics to file
-with open('metrics.txt', 'w') as outfile:
-    outfile.write(f'\nMean Absolute Error = {mae_1}, Mean Squared Error = {mse_1}.')
+# with open('metrics.txt', 'w') as outfile:
+#     outfile.write(f'\nMean Absolute Error = {mae_1}, Mean Squared Error = {mse_1}.')
