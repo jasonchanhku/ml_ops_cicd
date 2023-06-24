@@ -19,7 +19,7 @@ jobs:
 
           echo "## Model Report" >> report.md
           cat metrics.txt >> report.md          
-          echo "## Model Plot" >> report.md
+          echo -e "\n ## Model Plot" >> report.md
           echo -e "\n Model performance metrics are on the plot below." >> report.md
           echo "![](./model_results.png)" >> report.md
           
