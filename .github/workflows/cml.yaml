@@ -1,0 +1,29 @@
+name: mlops-example-tf-regression
+on: [push]
+jobs:
+  train-and-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: iterative/setup-cml@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Your ML workflow goes here
+          pip install -r requirements.txt
+          python model.py
+
+          echo "## Model Report" >> report.md
+          cat metrics.txt >> report.md          
+          echo -e "\n ## Model Plot" >> report.md
+          echo -e "\n Model performance metrics are on the plot below." >> report.md
+          echo "![](./model_results.png)" >> report.md
+          
+          cml comment create report.md
+
+        
+          
