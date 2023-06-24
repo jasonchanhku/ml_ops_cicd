@@ -74,7 +74,7 @@ tf.random.set_seed(42)
 
 model = tf.keras.Sequential([
     tf.keras.layers.Input(shape=(1,)),
-    tf.keras.layers.Dense(1)
+    tf.keras.layers.Dense(1),
     tf.keras.layers.Dense(1)
 ])
 # Create a model using the Sequential API
